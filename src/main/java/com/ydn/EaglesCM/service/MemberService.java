@@ -25,7 +25,7 @@ public class MemberService implements UserDetailsService {
     }
 
     /**
-     *  회원 중복확인
+     *  회원 중복 체크
      * @param loginId
      * @param nickname
      * @param email
@@ -45,6 +45,7 @@ public class MemberService implements UserDetailsService {
     * 회원가입
      * @param memberSaveFrom
      */
+    @Transactional
     public void save(MemberSaveForm memberSaveFrom) throws IllegalStateException{
 
         isDuplicateMember(
