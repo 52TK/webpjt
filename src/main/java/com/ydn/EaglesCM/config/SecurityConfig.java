@@ -24,14 +24,26 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests( authorize -> authorize
+        http
+                .authorizeRequests( authorize -> authorize
+                        // URL 에 따른 권한 설정
+                        .mvcMatchers(
+                                "/members/join"
+                        )
+                        .anonymous()
+                        .mvcMatchers(
+                                "/articles/**",
+                                "/"
 
-                .mvcMatchers("/members/join").anonymous()
-                .mvcMatchers("/articles/**").permitAll()
-                .mvcMatchers("/admin/**").hasRole("ADMIN")
+                        )
+                        .permitAll()
+                .mvcMatchers(
+                        "/adm/**"
+                )
+                .hasRole("ADMIN")
                 .anyRequest()
                 .denyAll()
-        )
+                )
 
                 .formLogin()
                     .loginPage("/members/login")

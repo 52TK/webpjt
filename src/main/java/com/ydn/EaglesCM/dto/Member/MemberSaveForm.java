@@ -18,5 +18,4 @@ public class MemberSaveForm {
     @NotBlank
     private String email;
 
-
 }
