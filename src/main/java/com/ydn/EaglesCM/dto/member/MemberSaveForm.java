@@ -1,4 +1,4 @@
-package com.ydn.EaglesCM.dto.Member;
+package com.ydn.EaglesCM.dto.member;
 
 import lombok.Data;
 

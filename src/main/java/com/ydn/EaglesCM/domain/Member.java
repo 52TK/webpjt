@@ -16,27 +16,29 @@ import java.util.List;
 @Getter
 @NoArgsConstructor
 public class Member implements UserDetails {
+
     @Id
+    @Column(name = "member_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private Long id;
 
     private String loginId;
-
     private String loginPw;
 
     private String name;
-
     private String nickname;
-
     private String email;
 
+    @OneToMany(mappedBy = "member", cascade = CascadeType.REMOVE)
+    private List<Article> articles = new ArrayList<>();
+
+    @Enumerated(EnumType.STRING)
+    private Role authority;
+
     private boolean isAccountNonExpired = true;
-
     private boolean isAccountNonLocked = true;
-
     private boolean isCredentialsNonExpired = true;
-
     private boolean isEnabled = true;
 
     public static Member createMember(String loginId, String loginPw, String name, String nickname, String email, Role authority) {
@@ -53,9 +55,6 @@ public class Member implements UserDetails {
 
         return member;
     }
-
-    @Enumerated(EnumType.STRING)
-    private Role authority;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

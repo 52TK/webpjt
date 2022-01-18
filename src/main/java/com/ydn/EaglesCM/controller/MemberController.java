@@ -1,7 +1,7 @@
 package com.ydn.EaglesCM.controller;
 
-import com.ydn.EaglesCM.dto.Member.MemberLoginForm;
-import com.ydn.EaglesCM.dto.Member.MemberSaveForm;
+import com.ydn.EaglesCM.dto.member.MemberLoginForm;
+import com.ydn.EaglesCM.dto.member.MemberSaveForm;
 import com.ydn.EaglesCM.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
