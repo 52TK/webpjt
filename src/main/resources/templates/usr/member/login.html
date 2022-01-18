@@ -1,41 +1,44 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout}">
 <head>
     <meta charset="UTF-8">
     <title>로그인</title>
 </head>
 <body>
 
-    <div class="container">
+<div layout:fragment="content">
 
-        <div class="content">
+<div class="container">
 
-            <form action="" th:action="@{~/members/doLogin}" th:object="{memberLoginForm" method="post">
+    <div class="contents">
 
-                <div class="form-item">
+        <form action="" th:action="@{~/members/doLogin}" th:object="${memberLoginForm}" method="POST">
 
-                    <span>아이디</span>
-                    <input type="text" name=""loginId>
+            <div class="form-item">
+                <span>아이디</span>
+                <input type="text" name="loginId">
+            </div>
 
-                </div>
+            <div class="form-item">
+                <span>비밀번호</span>
+                <input type="password" name="loginPw">
+            </div>
+            <div class="form-item">
+                <button>
+                    로그인
+                </button>
+                <a href="/">
+                    <button>취소</button>
+                </a>
 
-                <div class="form-item">
-
-                    <span>비밀번호</span>
-                    <input type="password" name=""loginPw>
-
-                </div>
-
-                <div class="form-item">
-                    <button>로그인</button>
-                </div>
-
-            </form>
-
-        </div>
+            </div>
+        </form>
 
     </div>
 
+</div>
+</div>
 </body>
 </html>
