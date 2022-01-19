@@ -3,6 +3,7 @@ package com.ydn.EaglesCM.service;
 import com.ydn.EaglesCM.config.Role;
 import com.ydn.EaglesCM.dao.MemberRepository;
 import com.ydn.EaglesCM.domain.Member;
+import com.ydn.EaglesCM.dto.member.MemberModifyForm;
 import com.ydn.EaglesCM.dto.member.MemberSaveForm;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -85,7 +86,23 @@ public class MemberService implements UserDetailsService {
 
     }
 
+    @Transactional
+    public Long modifyMember(MemberModifyForm memberModifyForm, String loginId){
 
+        Member findMember = findByLoginId(loginId);
+
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+
+        findMember.modifyMember(
+                bCryptPasswordEncoder.encode(memberModifyForm.getLoginPw()),
+                memberModifyForm.getNickname(),
+                memberModifyForm.getEmail()
+        );
+
+        return findMember.getId();
+
+
+    }
 
 
 
