@@ -8,6 +8,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -30,6 +31,9 @@ public class Member implements UserDetails {
     private String nickname;
     private String email;
 
+    private LocalDateTime regDate = LocalDateTime.now();
+    private LocalDateTime updateDate = LocalDateTime.now();
+
     @OneToMany(mappedBy = "member", cascade = CascadeType.REMOVE)
     private List<Article> articles = new ArrayList<>();
 
@@ -40,6 +44,8 @@ public class Member implements UserDetails {
     private boolean isAccountNonLocked = true;
     private boolean isCredentialsNonExpired = true;
     private boolean isEnabled = true;
+
+
 
     public static Member createMember(String loginId, String loginPw, String name, String nickname, String email, Role authority) {
 

@@ -39,12 +39,13 @@ public class ArticleController {
 
         try {
 
-            Member fingMember = memberService.findByLoginId(principal.getName());
+            Member findMember = memberService.findByLoginId(principal.getName());
 
             articleService.save(
                     articleSaveForm,
-                    fingMember
+                    findMember
             );
+
         } catch (IllegalStateException e){
 
             model.addAttribute("err_msg", e.getMessage() );

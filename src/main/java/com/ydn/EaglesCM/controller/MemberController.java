@@ -55,7 +55,7 @@ public class MemberController {
         return "redirect:/";
     }
 
-    @GetMapping("members/login")
+    @GetMapping("/members/login")
     public String showLogin(Model model){
 
         model.addAttribute("memberLoginForm", new MemberLoginForm());
