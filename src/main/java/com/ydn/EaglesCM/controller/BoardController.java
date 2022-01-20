@@ -19,7 +19,7 @@ public class BoardController {
 
         model.addAttribute("boardSaveForm", new BoardSaveForm());
 
-        return "usr/boards/add";
+        return "usr/board/add";
     }
 
     @PostMapping("/boards/add")
