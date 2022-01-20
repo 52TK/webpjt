@@ -25,6 +25,10 @@ public class Article {
     @JoinColumn(name = "member_id")
     private Member member;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "board_id")
+    private Board board;
+
     // 생성 메소드
     public static Article createArticle(String title, String body){
 
