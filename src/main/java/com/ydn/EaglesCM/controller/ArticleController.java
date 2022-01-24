@@ -2,6 +2,7 @@ package com.ydn.EaglesCM.controller;
 
 import com.ydn.EaglesCM.domain.Article;
 import com.ydn.EaglesCM.domain.Member;
+import com.ydn.EaglesCM.dto.article.ArticleDTO;
 import com.ydn.EaglesCM.dto.article.ArticleModifyForm;
 import com.ydn.EaglesCM.dto.article.ArticleSaveForm;
 import com.ydn.EaglesCM.service.ArticleService;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import java.rmi.server.ExportException;
 import java.security.Principal;
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -93,6 +95,17 @@ public class ArticleController {
         } catch (Exception e){
             return "usr/article/modify";
         }
+
+    }
+
+    @GetMapping("/articles")
+    public String showList(Model model){
+
+        List<ArticleDTO> articleList = articleService.getArticleList();
+
+        model.addAttribute("articleList", articleList);
+
+        return "usr/article/list";
 
     }
 

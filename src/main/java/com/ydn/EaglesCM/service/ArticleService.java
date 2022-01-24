@@ -3,6 +3,7 @@ package com.ydn.EaglesCM.service;
 import com.ydn.EaglesCM.dao.ArticleRepository;
 import com.ydn.EaglesCM.domain.Article;
 import com.ydn.EaglesCM.domain.Member;
+import com.ydn.EaglesCM.dto.article.ArticleDTO;
 import com.ydn.EaglesCM.dto.article.ArticleModifyForm;
 import com.ydn.EaglesCM.dto.article.ArticleSaveForm;
 import com.ydn.EaglesCM.dto.member.MemberModifyForm;
@@ -10,6 +11,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
@@ -60,6 +63,27 @@ public class ArticleService {
         );
 
     }
+
+    public List<ArticleDTO> getArticleList(){
+
+        List<Article> articleList = articleRepository.findAll();
+
+        List<ArticleDTO> articleDTOList = new ArrayList<>();
+
+        for (Article article: articleList) {
+
+            ArticleDTO articleDTO = new ArticleDTO(article);
+            articleDTOList.add(articleDTO);
+
+        }
+
+        return articleDTOList;
+
+    }
+
+
+
+
 
 
 }
