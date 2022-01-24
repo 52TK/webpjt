@@ -80,10 +80,22 @@ public class BoardController {
             return "adm/board/modify";
         }
 
+        return "redirect:/";
+    }
 
-        return "";
+    // 삭제
+    @GetMapping("/boards/delete/{id}")
+    public String doDeleteBoard(@PathVariable(name = "id") Long id){
+
+        try {
+            boardService.delete(id);
+            return "adm/board/list";
+        } catch (Exception e){
+            return "adm/board/list";
+        }
 
     }
+
 
 }
 
