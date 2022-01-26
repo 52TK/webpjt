@@ -35,7 +35,7 @@ public class BoardController {
 
         boardService.save(boardSaveForm);
 
-        return "redirect:/";
+        return "redirect:/adm/boards";
     }
 
     // list 작업
