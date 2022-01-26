@@ -8,6 +8,7 @@ import com.ydn.EaglesCM.dto.article.ArticleSaveForm;
 import com.ydn.EaglesCM.service.ArticleService;
 import com.ydn.EaglesCM.service.MemberService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -116,6 +117,21 @@ public class ArticleController {
         } catch (Exception e){
             return "redirect:/";
         }
+
+    }
+
+    @GetMapping("/articles/{id}")
+    public String showDetail(@PathVariable(name = "id") Long id, Model model){
+
+        try {
+            ArticleDTO findArticle = articleService.getArticle(id);
+            model.addAttribute("article", findArticle);
+
+            return "usr/article/detail";
+        } catch (Exception e){
+            return "redirect:/";
+        }
+
 
     }
 
