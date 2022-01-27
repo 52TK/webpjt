@@ -70,7 +70,8 @@ public class BoardController {
         try {
             BoardDTO board = boardService.getBoardDetail(id);
 
-            model.addAttribute("boardModifyForm", new BoardModifyForm(
+            model.addAttribute("board", new BoardModifyForm(
+                    board.getId(),
                     board.getName(),
                     board.getDetail()
             ));
