@@ -1,11 +1,13 @@
 package com.ydn.EaglesCM.controller;
 
 import com.ydn.EaglesCM.domain.Article;
+import com.ydn.EaglesCM.domain.Board;
 import com.ydn.EaglesCM.domain.Member;
 import com.ydn.EaglesCM.dto.article.ArticleDTO;
 import com.ydn.EaglesCM.dto.article.ArticleModifyForm;
 import com.ydn.EaglesCM.dto.article.ArticleSaveForm;
 import com.ydn.EaglesCM.service.ArticleService;
+import com.ydn.EaglesCM.service.BoardService;
 import com.ydn.EaglesCM.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.parameters.P;
@@ -27,6 +29,7 @@ public class ArticleController {
 
     private final ArticleService articleService;
     private final MemberService memberService;
+    private final BoardService boardService;
 
     @GetMapping("/articles/write")
     public String showWrite(Model model){
@@ -47,10 +50,12 @@ public class ArticleController {
         try {
 
             Member findMember = memberService.findByLoginId(principal.getName());
+            Board findBoard = boardService.getBoard(articleSaveForm.getBoard_id());
 
             articleService.save(
                     articleSaveForm,
-                    findMember
+                    findMember,
+                    findBoard
             );
 
         } catch (IllegalStateException e){

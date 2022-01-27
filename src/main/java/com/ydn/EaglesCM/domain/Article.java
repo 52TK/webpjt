@@ -31,6 +31,8 @@ public class Article {
     @JoinColumn(name = "board_id")
     private Board board;
 
+
+
     // 생성 메소드
     public static Article createArticle(String title, String body){
 
@@ -58,6 +60,10 @@ public class Article {
         member.getArticles().add(this);
     }
 
+    public void setBoard(Board board){
 
+        this.board = board;
+        board.getArticles().add(this);
+    }
 
 }

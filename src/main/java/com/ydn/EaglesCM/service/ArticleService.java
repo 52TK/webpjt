@@ -2,6 +2,7 @@ package com.ydn.EaglesCM.service;
 
 import com.ydn.EaglesCM.dao.ArticleRepository;
 import com.ydn.EaglesCM.domain.Article;
+import com.ydn.EaglesCM.domain.Board;
 import com.ydn.EaglesCM.domain.Member;
 import com.ydn.EaglesCM.dto.article.ArticleDTO;
 import com.ydn.EaglesCM.dto.article.ArticleModifyForm;
@@ -23,8 +24,8 @@ public class ArticleService {
 
     private final ArticleRepository articleRepository;
 
-
-    public void save(ArticleSaveForm articleSaveForm, Member member){
+    @Transactional
+    public void save(ArticleSaveForm articleSaveForm, Member member, Board board){
 
         Article article = Article.createArticle(
                 articleSaveForm.getTitle(),
@@ -32,6 +33,7 @@ public class ArticleService {
         );
 
         article.setMember(member);
+        article.setBoard(board);
 
         articleRepository.save(article);
 
