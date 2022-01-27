@@ -6,6 +6,7 @@ import com.ydn.EaglesCM.domain.Member;
 import com.ydn.EaglesCM.dto.article.ArticleDTO;
 import com.ydn.EaglesCM.dto.article.ArticleModifyForm;
 import com.ydn.EaglesCM.dto.article.ArticleSaveForm;
+import com.ydn.EaglesCM.dto.board.BoardDTO;
 import com.ydn.EaglesCM.service.ArticleService;
 import com.ydn.EaglesCM.service.BoardService;
 import com.ydn.EaglesCM.service.MemberService;
@@ -31,8 +32,12 @@ public class ArticleController {
     private final MemberService memberService;
     private final BoardService boardService;
 
-    @GetMapping("/articles/write")
-    public String showWrite(Model model){
+    @GetMapping("/boards/{id}/articles/write")
+    public String showWrite(@PathVariable(name = "id") Long id, Model model){
+
+        BoardDTO boardDetail = boardService.getBoardDetail(id);
+
+        model.addAttribute("board", boardDetail);
 
         model.addAttribute("articleSaveForm", new ArticleSaveForm());
 
@@ -40,8 +45,8 @@ public class ArticleController {
 
     }
 
-    @PostMapping("/articles/write")
-    public String doWrite(@Validated ArticleSaveForm articleSaveForm, BindingResult bindingResult, Model model, Principal principal){
+    @PostMapping("/boards/{id}/articles/write")
+    public String doWrite(@Validated ArticleSaveForm articleSaveForm, BindingResult bindingResult, Model model, Principal principal, @PathVariable(name = "id") Long id){
 
         if( bindingResult.hasErrors() ){
             return "usr/article/write";
@@ -66,7 +71,7 @@ public class ArticleController {
 
         }
 
-        return "redirect:/";
+        return "redirect:/articles";
 
     }
 
