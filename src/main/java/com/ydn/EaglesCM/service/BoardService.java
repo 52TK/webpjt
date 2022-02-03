@@ -3,6 +3,7 @@ package com.ydn.EaglesCM.service;
 import com.ydn.EaglesCM.dao.BoardRepository;
 import com.ydn.EaglesCM.domain.Article;
 import com.ydn.EaglesCM.domain.Board;
+import com.ydn.EaglesCM.domain.Member;
 import com.ydn.EaglesCM.dto.article.ArticleListDTO;
 import com.ydn.EaglesCM.dto.board.BoardDTO;
 import com.ydn.EaglesCM.dto.board.BoardModifyForm;
@@ -24,11 +25,12 @@ public class BoardService{
     private final BoardRepository boardRepository;
 
     @Transactional
-    public void save(BoardSaveForm boardSaveForm){
+    public void save(BoardSaveForm boardSaveForm, Member member){
 
         Board board = Board.createBoard(
                 boardSaveForm.getName(),
                 boardSaveForm.getDetail()
+                member
         );
 
         boardRepository.save(board);

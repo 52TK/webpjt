@@ -16,18 +16,19 @@ public class DataInit {
     private final InitService initService;
 
     @PostConstruct
-    public void init(){
+    public void init() {
         initService.initAdmin();
+        initService.initMember();
     }
 
     @Component
     @Service
     @RequiredArgsConstructor
-    static class InitService{
+    static class InitService {
 
         private final MemberRepository memberRepository;
 
-        public void initAdmin(){
+        public void initAdmin() {
 
             BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
             Member admin = Member.createMember(
@@ -43,6 +44,26 @@ public class DataInit {
 
         }
 
-    }
+        public void initMember() {
 
+            BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+
+            for (int i = 1; i <= 5; i++) {
+                Member member = Member.createMember(
+                        "user" + i,
+                        bCryptPasswordEncoder.encode("user" + i),
+                        "user" + i,
+                        "user" + i,
+                        "user" + i + "@user.com",
+                        Role.MEMBER
+                );
+
+                memberRepository.save(member);
+
+
+            }
+
+        }
+
+    }
 }
