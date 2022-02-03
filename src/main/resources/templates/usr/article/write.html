@@ -18,7 +18,7 @@
                 <span th:text="${board.name}"></span>
             </div>
 
-            <form action="" th:action="@{~/boards/} + ${board.id} + ${/articles/write}" method="post">
+            <form action="" th:action="@{~/boards/} + ${board.id} + @{/articles/write}" method="post">
 
                 <input type="hidden" th:value="${board.id}" name="board_id">
 

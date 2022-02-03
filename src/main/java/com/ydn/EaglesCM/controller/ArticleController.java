@@ -81,16 +81,8 @@ public class ArticleController {
         try {
             ArticleDTO article = articleService.getArticle(id);
 
-            model.addAttribute(
-                    "articleModifyForm",
-                    new ArticleModifyForm(
-                           article.getTitle(),
-                            article.getBody(),
-                            article.getBoardId()
-                    ));
-
+            model.addAttribute("article", article);
             return "usr/article/modify";
-
         } catch (Exception e){
             return "redirect:/";
         }
