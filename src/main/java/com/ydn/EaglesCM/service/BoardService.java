@@ -29,7 +29,7 @@ public class BoardService{
 
         Board board = Board.createBoard(
                 boardSaveForm.getName(),
-                boardSaveForm.getDetail()
+                boardSaveForm.getDetail(),
                 member
         );
 
