@@ -4,7 +4,19 @@
       layout:decorate="~{layouts/layout}">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>회원가입</title>
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+
+        let err_msg = [[ ${err_msg} ]]
+
+        if( err_msg != null || err_msg != undefined ){
+            alert(err_msg);
+        }
+
+        /*]]*/
+    </script>
+
 </head>
 <body>
 
