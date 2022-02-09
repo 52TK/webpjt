@@ -46,7 +46,7 @@ public class BoardController {
 
         boardService.save(boardSaveForm, findAdmin);
 
-        return "redirect:/adm/boards";
+        return "redirect:/boards";
     }
 
     // list 작업
@@ -81,7 +81,8 @@ public class BoardController {
         try {
             BoardDTO board = boardService.getBoardDetail(id);
 
-            model.addAttribute("board", new BoardModifyForm(
+            model.addAttribute("boardId", board.getId());
+            model.addAttribute("boardModifyForm", new BoardModifyForm(
                     board.getId(),
                     board.getName(),
                     board.getDetail()
@@ -95,7 +96,14 @@ public class BoardController {
     }
 
     @PostMapping("/adm/boards/modify/{id}")
-    public String doModifyBoard(@PathVariable(name = "id") Long id, BoardModifyForm boardModifyForm){
+    public String doModifyBoard(@PathVariable(name = "id") Long id, @Validated BoardModifyForm boardModifyForm, BindingResult bindingResult, Model model){
+
+        BoardDTO findBoard = boardService.getBoardDetail(id);
+
+        if(bindingResult.hasErrors()){
+            model.addAttribute("boardId", findBoard.getId());
+            return "adm/board/modify";
+        }
 
         try{
             boardService.modify(id, boardModifyForm);
