@@ -50,6 +50,9 @@
           </td>
           <td>
             <div class="">
+              <a th:href="@{~/articles/modify/} + ${article.id}">
+                <span>수정</span>
+              </a>
               <a th:href="@{~/articles/delete/} + ${article.id}">
                 <span>삭제</span>
               </a>
