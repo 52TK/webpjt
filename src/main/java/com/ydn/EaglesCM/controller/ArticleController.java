@@ -121,12 +121,12 @@ public class ArticleController {
                 throw new IllegalStateException("잘못된 요청입니다.");
             }
 
-            Board findBoard = boardService.getBoard(id);
+            Board findBoard = boardService.getBoard(articleModifyForm.getBoard_id());
 
             articleService.modifyArticle(articleModifyForm, findBoard, id);
             return "redirect:/boards/" + id;
         } catch (Exception e){
-            return "redirect:/articles/modify" + id;
+            return "redirect:/articles/modify/" + id;
         }
 
     }
