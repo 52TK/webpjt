@@ -38,7 +38,7 @@ public class AdmMemberController {
 
         return "adm/member/detail";
 
-        
+
     }
 
 }

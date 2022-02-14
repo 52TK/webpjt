@@ -34,11 +34,11 @@ public class AdmMemberService {
 
     }
 
-    public AdmMemberDetailDTO getMemberDetail(Long id){
+    public AdmMemberDetailDTO getMemberDetail(Long id){  // 회원정보 + 작성된 글
 
         List<ArticleListDTO> articleDTOList = new ArrayList<>();
 
-        Optional<Member> memberOptional = memberRepository.findById(id);
+        Optional<Member> memberOptional = memberRepository.findById(id);  // id = 1
 
         memberOptional.orElseThrow(
                 () -> new IllegalStateException("존재하지 않는 회원입니다.")
