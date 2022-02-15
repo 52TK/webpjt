@@ -22,7 +22,7 @@ public class AdmArticleController {
 
         return "adm/article/main";
     }
-    
+
     // 게시글 삭제
 
 }

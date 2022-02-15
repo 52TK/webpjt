@@ -23,16 +23,13 @@ public class AdmArticleService {
 
         List<Article> articleList = articleRepository.findAll();
 
-        for( Article article : articleList ){
+        for( Article article : articleList){
 
             ArticleListDTO articleListDTO = new ArticleListDTO(article);
             articleListDTOList.add(articleListDTO);
-
         }
 
         return articleListDTOList;
-
     }
-
 
 }
