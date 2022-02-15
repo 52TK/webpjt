@@ -23,9 +23,4 @@ public class AdmController {
         return "adm/article/main";
     }
 
-    @GetMapping("/boards")
-    public String showManageBoard(){
-        return "adm/board/main";
-    }
-
 }

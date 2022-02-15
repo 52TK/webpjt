@@ -6,6 +6,7 @@ import com.ydn.EaglesCM.domain.Board;
 import com.ydn.EaglesCM.domain.Member;
 import com.ydn.EaglesCM.dto.article.ArticleListDTO;
 import com.ydn.EaglesCM.dto.board.BoardDTO;
+import com.ydn.EaglesCM.dto.board.BoardListDTO;
 import com.ydn.EaglesCM.dto.board.BoardModifyForm;
 import com.ydn.EaglesCM.dto.board.BoardSaveForm;
 import lombok.RequiredArgsConstructor;
@@ -23,6 +24,23 @@ import java.util.Optional;
 public class BoardService{
 
     private final BoardRepository boardRepository;
+
+    public List<BoardListDTO> getBoardsList(){
+
+        List<BoardListDTO> boardListDTOList = new ArrayList<>();
+
+        List<Board> boardList = boardRepository.findAll();
+
+        for( Board board : boardList ) {
+
+            BoardListDTO boardListDTO = new BoardListDTO(board);
+            boardListDTOList.add(boardListDTO);
+
+        }
+
+        return boardListDTOList;
+
+    }
 
     @Transactional
     public void save(BoardSaveForm boardSaveForm, Member member){
