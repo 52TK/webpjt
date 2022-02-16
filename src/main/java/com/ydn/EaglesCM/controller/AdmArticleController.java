@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -24,5 +25,17 @@ public class AdmArticleController {
     }
 
     // 게시글 삭제
+    @GetMapping("/articles/delete/{id}")
+    public String doDeleteArticle(@PathVariable(name = "id") Long id){
+
+        admArticleService.deleteArticle(id);
+        
+        // !게시글의 작성자의 아이디 = 현재 로그인된 아이디
+        // 현재 로그인된 아이디 = admin 이면 글을 지울수 있게 해줌.
+
+        return "redirect:/adm/articles";
+    }
+
+
 
 }

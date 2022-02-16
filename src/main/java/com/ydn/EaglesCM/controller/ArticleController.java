@@ -136,8 +136,8 @@ public class ArticleController {
     public String deleteArticle(@PathVariable(name = "id") Long id, Principal principal){
 
         try {
-
             ArticleDTO article = articleService.getArticle(id);
+
             if(!article.getMemberLoginId().equals(principal.getName())){
                 return "redirect:/boards/" + id;
             }
