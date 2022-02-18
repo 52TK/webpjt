@@ -57,7 +57,9 @@
 
                     <div class="join-item">
                         <span>닉네임</span>
-                        <input type="text" name="nickname" th:field="*{nickname}" th:errorclass="field-error">
+                        <input id="nickname" type="text" name="nickname" th:field="*{nickname}" th:errorclass="field-error">
+                        <span th:errors="*{nickname}"></span>
+                        <button type="button" onclick="checkDupleNickname()">중복확인</button>
                     </div>
 
                     <div class="join-item">
