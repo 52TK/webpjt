@@ -29,7 +29,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         .mvcMatchers(
                                 "/members/join",
                                 "/members/login"
-                                ,"members/check/**"
+                                ,"/members/check/**"
                         )
                         .anonymous()
                         .mvcMatchers(
