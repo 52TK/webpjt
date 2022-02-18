@@ -36,7 +36,7 @@
                     <h1>회원가입</h1>
                 </div>
 
-                <form action="" th:action="@{~/members/join}" th:object="${memberSaveForm}" method="post">
+                <form action="" th:action="@{~/members/join}" th:object="${memberSaveForm}" method="post" onsubmit="return checkStatus()">
 
                     <div class="join-item">
                         <span>아이디</span>

@@ -8,34 +8,28 @@ async function checkDupleLoginId(){
 
     await fetch("http://localhost:8085/members/check/id?loginId=" + loginId)
     .then(
-
         (response) => {
             return response.json();
         }
     )
     .then(
-
         (data) => {
 
             let idCheck = data;
 
-            console.log("idCheck")
-            console.log(idCheck);
-            console.log("idCheck.status")
-            console.log(idCheck.status);
+            console.log("dataCheck")
+            console.log(dataCheck);
+            console.log("dataCheck.status")
+            console.log(dataCheck.status);
 
             if(idCheck.status || loginId === ""){
-
-            LOGIN_ID_STATUS = false;
-            console.log(LOGIN_ID_STATUS);
-            alert("이미 존재하는 아이디 입니다.");
-
+                LOGIN_ID_STATUS = false;
+                console.log(LOGIN_ID_STATUS);
+                alert("가입하실 수 없는 아이디 입니다.")
             }else{
-
-            LOGIN_ID_STATUS = true;
-            console.log(LOGIN_ID_STATUS);
-            alert("가입할 수 있는 아이디 입니다.")
-
+                LOGIN_ID_STATUS = true;
+                console.log(LOGIN_ID_STATUS);
+                alert("가입하실 수 있는 아이디 입니다.")
             }
         }
     )
@@ -54,9 +48,11 @@ function checkStatus(){
         CHECK_STATUS = false;
     }
 
-    if( !CHECK_STATUS ){
-    alert("중복확인을 해주시기 바랍니다.");
-    return false;
+    if(!CHECK_STATUS){
+        alert("중복확인을 해주시기 바랍니다.");
+        return false;
     }
 
 }
+
+

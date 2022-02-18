@@ -26,7 +26,6 @@ public class MemberController {
     public CheckStatus checkDuple(@RequestParam String loginId){
 
         boolean isExists = memberService.isDupleMember(loginId);
-
         CheckStatus checkStatus = new CheckStatus(isExists);
 
         return checkStatus;
@@ -126,12 +125,5 @@ public class MemberController {
         return "redirect:/";
 
     }
-
-
-
-
-
-
-
 
 }
