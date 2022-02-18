@@ -150,6 +150,12 @@ public class MemberService implements UserDetailsService {
 
     }
 
+    public boolean isDupleEmail(String email){
+
+        return memberRepository.existsByEmail(email);
+
+    }
+
 
 }
 

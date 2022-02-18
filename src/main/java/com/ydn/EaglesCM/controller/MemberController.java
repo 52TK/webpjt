@@ -43,6 +43,17 @@ public class MemberController {
 
     }
 
+    @RequestMapping("/members/check/email")
+    @ResponseBody
+    public CheckStatus checkEmail(@RequestParam String email){
+
+        boolean isExists = memberService.isDupleEmail(email);
+        CheckStatus checkStatus = new CheckStatus(isExists);
+
+        return checkStatus;
+
+    }
+
 
     /**회원가입 페이지 이동
      *
