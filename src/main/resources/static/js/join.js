@@ -19,18 +19,11 @@ async function checkDupleLoginId(){
 
             let idCheck = data;
 
-            console.log("dataCheck")
-            console.log(dataCheck);
-            console.log("dataCheck.status")
-            console.log(dataCheck.status);
-
             if(idCheck.status || loginId === ""){
                 LOGIN_ID_STATUS = false;
-                console.log(LOGIN_ID_STATUS);
                 alert("가입하실 수 없는 아이디 입니다.")
             }else{
                 LOGIN_ID_STATUS = true;
-                console.log(LOGIN_ID_STATUS);
                 alert("가입하실 수 있는 아이디 입니다.")
             }
         }
@@ -59,18 +52,11 @@ async function checkDupleNickname(){
 
             let nicknameCheck = data;
 
-            console.log("dataCheck")
-            console.log(dataCheck);
-            console.log("dataCheck.status")
-            console.log(dataCheck.status);
-
             if(nicknameCheck.status || nickname === ""){
                 NICKNAME_STATUS = false;
-                console.log(NICKNAME_STATUS);
                 alert("가입하실 수 없는 닉네임 입니다.")
             }else{
                 NICKNAME_STATUS = true;
-                console.log(NICKNAME_STATUS);
                 alert("가입하실 수 있는 닉네임 입니다.")
             }
         }
