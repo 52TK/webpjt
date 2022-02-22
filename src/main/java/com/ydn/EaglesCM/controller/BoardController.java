@@ -1,5 +1,6 @@
 package com.ydn.EaglesCM.controller;
 
+import com.ydn.EaglesCM.domain.Article;
 import com.ydn.EaglesCM.domain.Board;
 import com.ydn.EaglesCM.domain.Member;
 import com.ydn.EaglesCM.dto.article.ArticleListDTO;
@@ -16,6 +17,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -38,8 +40,9 @@ public class BoardController {
 
     }
 
+                                    // http://localhost:8085/boards/1id?page=1&searchKeyword=제목
     @GetMapping("/boards/{id}")    // http://localhost:8085/boards/1?page=1 (디폴드값으로 1페이지를 보여줌)
-    public String showBoardDetail(@PathVariable(name = "id")Long id, Model model, @RequestParam(name="page", defaultValue = "1") int page){
+    public String showBoardDetail(@PathVariable(name = "id")Long id, Model model, @RequestParam(name="page", defaultValue = "1") int page, @RequestParam(name = "searchKeyword") String searchKeyword){
 
         int size = 10;
 
@@ -48,6 +51,20 @@ public class BoardController {
             BoardDTO boardDetail = boardService.getBoardDetail(id);
 
             List<ArticleListDTO> articleListDTO = boardDetail.getArticleListDTO();
+
+            List<ArticleListDTO> store = new ArrayList<>();
+
+            for ( ArticleListDTO listDTO : articleListDTO) {
+
+                if (listDTO.getTitle().contains(searchKeyword)){
+                    store.add(listDTO);
+                }
+
+            }
+
+            if ( store.size() != 0 ){
+                articleListDTO = store;
+            }
 
             Collections.reverse(articleListDTO);
             // 0, 10, 20 ...
@@ -73,6 +90,12 @@ public class BoardController {
 
             // 페이지 자르기 (subList)
             List<ArticleListDTO> articlePage = articleListDTO.subList(startIndex, lastIndex);  // [0, 10] -> 0,1,2,3,4,5,6,7,8,9
+
+            if( !searchKeyword.equals("") && store.size() == 0 ){
+
+                articlePage = store;
+
+            }
 
             model.addAttribute("board", boardDetail);
             model.addAttribute("articles", articlePage);
