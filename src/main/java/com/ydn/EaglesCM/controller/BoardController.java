@@ -40,9 +40,9 @@ public class BoardController {
 
     }
 
-                                    // http://localhost:8085/boards/1id?page=1&searchKeyword=제목
+                                    // http://localhost:8085/boards/id?page=1&searchKeyword=제목
     @GetMapping("/boards/{id}")    // http://localhost:8085/boards/1?page=1 (디폴드값으로 1페이지를 보여줌)
-    public String showBoardDetail(@PathVariable(name = "id")Long id, Model model, @RequestParam(name="page", defaultValue = "1") int page, @RequestParam(name = "searchKeyword") String searchKeyword){
+    public String showBoardDetail(@PathVariable(name = "id")Long id, Model model, @RequestParam(name="page", defaultValue = "1") int page, @RequestParam(name = "searchKeyword", defaultValue = "1") String searchKeyword){
 
         int size = 10;
 
