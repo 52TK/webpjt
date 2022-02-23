@@ -156,6 +156,14 @@ public class MemberService implements UserDetailsService {
 
     }
 
+    @Transactional
+    public void changeTempPw( String pw, Member member ){
+
+    BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+    member.changePw(bCryptPasswordEncoder.encode(pw));
+
+    }
+
 
 }
 

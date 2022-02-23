@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout}">
+<head>
+    <meta charset="UTF-8">
+    <meta id="_csrf" name="_csrf" th:content="${_csrf.token}"/>
+    <meta id="_csrf_header" name="_csrf_header" th:content="${_csrf.headerName}"/>
+    <title>비밀번호 찾기</title>
+</head>
+<body>
+
+<div layout:fragment="content">
+
+    <div class="container">
+
+        <div class="contents">
+
+            <form action="" method="POST" id="findForm">
+
+                <div class="form-item">
+                    <span>아이디</span>
+                    <input type="text" name="loginId" id="loginId">
+                </div>
+
+                <div class="form-item">
+                    <span>이메일</span>
+                    <input type="email" name="email" id="email">
+                </div>
+                <div class="form-item">
+                    <button>
+                        확인
+                    </button>
+                    <a href="/">
+                        <button>취소</button>
+                    </a>
+
+                </div>
+            </form>
+
+        </div>
+
+    </div>
+</div>
+
+<script src="/js/findpw.js"></script>
+
+</body>
+</html>

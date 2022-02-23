@@ -30,8 +30,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         // URL 에 따른 권한 설정
                         .mvcMatchers(
                                 "/members/join",
-                                "/members/login"
-                                ,"/members/check/**"
+                                "/members/login",
+                                "/members/check/**",
+                                "/members/find/pw",
+                                "/mails/find/pw"
                         )
                         .anonymous()
                         .mvcMatchers(
