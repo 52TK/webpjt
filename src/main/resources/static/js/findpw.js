@@ -1,10 +1,12 @@
 let token = document.querySelector("meta[name='_csrf']").getAttribute("content");
-let header = document.querySelector("meta[name='_csrf_header']").getAttribute("content");
+//let header = document.querySelector("meta[name='_csrf_header']").getAttribute("content");
 
 const findForm = document.querySelector("#findForm");
 findForm.addEventListener("submit", findPw);
 
-async function findPw(){
+async function findPw(e){
+
+    e.preventDefault();
 
     let loginId = document.querySelector("#loginId").value;
     let email = document.querySelector("#email").value;
@@ -19,28 +21,28 @@ async function findPw(){
 
     let data = {
 
-        method = "POST",
+        method : "POST",
         body: JSON.stringify(
             {
                 loginId : loginId,
                 email : email,
             }
         ),
-        header : {
-        'Content-Type' : 'application/json'
-        'X-CSRF-TOKEN' : token
+        headers : {
+        'Content-Type' : 'application/json',
+        'X-CSRF-TOKEN' : token,
         }
 
     }
 
-    await fetch("http://localhost:8085/mails/find/pw", data)
+    await fetch("http://localhost:8085/mails/find/pw", data)  // 추가 데이터(객체변수로)
     .then(
         (response) => {
             return response.json();
         }
     )
     .then(
-        (data) => {
+        (data) => {  // true 또는 false
 
         if( !data ){
             alert("이메일 발송 실패, 이메일을 확인해 주시기 바랍니다.");
