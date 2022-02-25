@@ -31,7 +31,7 @@ public class MailController {
             return false;
         }
 
-        return false;
+        return true;
 
     }
 
