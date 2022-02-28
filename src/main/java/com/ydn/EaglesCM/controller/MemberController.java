@@ -1,5 +1,6 @@
 package com.ydn.EaglesCM.controller;
 
+import com.ydn.EaglesCM.config.SecurityConfig;
 import com.ydn.EaglesCM.domain.Member;
 import com.ydn.EaglesCM.dto.member.CheckStatus;
 import com.ydn.EaglesCM.dto.member.MemberLoginForm;
@@ -7,6 +8,7 @@ import com.ydn.EaglesCM.dto.member.MemberModifyForm;
 import com.ydn.EaglesCM.dto.member.MemberSaveForm;
 import com.ydn.EaglesCM.service.MemberService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -54,6 +56,20 @@ public class MemberController {
 
     }
 
+    @DeleteMapping("/members")
+    @ResponseBody
+    public boolean doDelete(@RequestBody String loginId, Principal principal){
+
+        if( !loginId.equals(principal.getName()) ){
+            return false;
+        }
+
+        SecurityContextHolder.clearContext();
+
+        memberService.deleteMember(loginId);
+
+        return true;
+    }
 
     /**회원가입 페이지 이동
      *
