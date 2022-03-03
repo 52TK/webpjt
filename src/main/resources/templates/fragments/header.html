@@ -8,17 +8,17 @@
 
     <div class="header">
 
-        <nav>
+        <nav class="flex mt-6 mx-auto p-3">
 
-            <ul>
-                <a href="/" class="text">
+            <ul class="flex">
+                <a href="/" class="text-2xl ml-24">
                     <span>이글스 커뮤니티</span>
                 </a>
             </ul>
 
-            <ul>
+            <ul class="flex ml-auto mr-24">
                 <li sec:authorize="isAnonymous()">
-                    <a th:href="@{~/members/login}">로그인</a>
+                    <a class="mr-4" th:href="@{~/members/login}">로그인</a>
                     <a th:href="@{~/members/join}">회원가입</a>
                 </li>
 
