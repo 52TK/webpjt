@@ -20,7 +20,7 @@
                 <span> 회원정보 수정 </span>
             </div>
 
-            <form action="" th:action="@{~/members/modify/} + ${memberModifyForm.id}" th:object="${memberModifyForm}" method="POST">
+            <form action="" th:action="@{~/members/modify/} + ${memberModifyForm.loginId}" th:object="${memberModifyForm}" method="POST">
                 <div class="flex justify-center">
                     <div class="flex-col">
                         <div class="form-item mb-4">
