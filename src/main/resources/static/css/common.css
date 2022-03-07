@@ -1,12 +1,11 @@
 @font-face {
-    font-family: '-KITA-Regular';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/-KITA-Regular.woff') format('woff');
+    font-family: 'GowunDodum-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/GowunDodum-Regular.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
-
 body{
-    font-family : 'OTWelcomeRA';
+    font-family: 'GowunDodum-Regular';
 }
 
 .content-container{

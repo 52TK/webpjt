@@ -4,7 +4,7 @@
       layout:decorate="~{layouts/layout}">
 <head>
   <meta charset="UTF-8">
-  <title>게시물 디테일</title>
+  <title>게시글 상세보기</title>
 </head>
 <body>
 <div layout:fragment="content">
@@ -14,7 +14,6 @@
     <div class="content">
 
       <div class="title-container mb-12">
-
         <nav class="flex mt-8" aria-label="Breadcrumb">
           <ol class="inline-flex items-center space-x-1 md:space-x-3">
             <li class="inline-flex items-center">
@@ -37,7 +36,6 @@
             </li>
           </ol>
         </nav>
-
       </div>
 
       <div class="sub-container flex flex-col ml-6">
@@ -77,54 +75,53 @@
 
         </div>
 
+
       </div>
 
 
 
-
-      <table>
-
-        <thead>
-        <tr>
-          <th>게시글 번호</th>
-          <th>게시글 제목</th>
-          <th>게시글 내용</th>
-          <th>게시글 작성날짜</th>
-          <th>게시글 작성자</th>
-
-        </tr>
-        </thead>
-
-        <tbody>
-        <tr th:each="article : ${article}">
-          <td>
-            <span th:text="${article.id}"></span>
-          </td>
-          <td>
-            <span th:text="${article.title}"></span>
-          </td>
-          <td>
-            <span th:text="${article.body}"></span>
-          </td>
-          <td>
-            <span th:text="${#temporals.format(article.regDate, 'yyyy-MM-dd')}"></span>
-          </td>
-          <td>
-            <span th:text="${article.authorName}"></span>
-          </td>
-          <td>
-            <div class="">
-              <a th:href="@{~/articles/modify/} + ${article.id}">
-                <span>수정</span>
-              </a>
-              <a th:href="@{~/articles/delete/} + ${article.id}">
-                <span>삭제</span>
-              </a>
-            </div>
-          </td>
-        </tr>
-        </tbody>
-      </table>
+      <!--
+                  <table>
+                      <thead>
+                      <tr>
+                          <th>게시판 번호</th>
+                          <th>게시글 제목</th>
+                          <th>게시글 내용</th>
+                          <th>게시글 작성날짜</th>
+                          <th>게시글 작성자</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                      <tr th:each="article : ${article}">
+                          <td>
+                              <span th:text="${article.id}"></span>
+                          </td>
+                          <td>
+                              <span th:text="${article.title}"></span>
+                          </td>
+                          <td>
+                              <span th:text="${article.body}"></span>
+                          </td>
+                          <td>
+                              <span th:text="${#temporals.format(article.regDate, 'yyyy-MM-dd')}"></span>
+                          </td>
+                          <td>
+                              <span th:text="${article.authorName}"></span>
+                          </td>
+                          <td>
+                              <div class="">
+                                  <a th:href="@{~/articles/modify/} + ${article.id}">
+                                      <span>수정</span>
+                                  </a>
+                                  <a th:href="@{~/articles/delete/} + ${article.id}">
+                                      <span>삭제</span>
+                                  </a>
+                              </div>
+                          </td>
+                      </tr>
+                      </tbody>
+                  </table>
+      -->
     </div>
 
   </div>
