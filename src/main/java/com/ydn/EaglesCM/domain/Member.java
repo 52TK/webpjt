@@ -46,7 +46,6 @@ public class Member implements UserDetails {
     private boolean isEnabled = true;
 
 
-
     public static Member createMember(String loginId, String loginPw, String name, String nickname, String email, Role authority) {
 
         Member member = new Member();
