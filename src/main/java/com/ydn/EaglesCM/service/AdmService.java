@@ -34,6 +34,7 @@ public class AdmService {
 
     }
 
+
     public BoardStatDto getBoardStatDto(){
 
         List<Board> findLatestBoards = boardRepository.find3LatestBoard();
@@ -58,11 +59,9 @@ public class AdmService {
         }
 
         return new BoardStatDto(
-
                 boardRepository.count(),
                 latestBoardList,
                 boardCountList
-
         );
 
     }
