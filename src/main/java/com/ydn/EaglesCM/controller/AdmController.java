@@ -19,6 +19,7 @@ public class AdmController {
 
         model.addAttribute("memberStatData", admService.getMemberStatDto());
         model.addAttribute("boardStatData", admService.getBoardStatDto());
+        model.addAttribute("articleStatData", admService.getArticleStatDto());
 
         return "adm/general/main";
 

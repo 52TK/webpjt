@@ -1,13 +1,11 @@
 package com.ydn.EaglesCM.service;
 
 import com.ydn.EaglesCM.config.Role;
+import com.ydn.EaglesCM.dao.ArticleRepository;
 import com.ydn.EaglesCM.dao.BoardRepository;
 import com.ydn.EaglesCM.dao.MemberRepository;
 import com.ydn.EaglesCM.domain.Board;
-import com.ydn.EaglesCM.dto.adm.AdmBoardCountDto;
-import com.ydn.EaglesCM.dto.adm.AdmBoardNameDto;
-import com.ydn.EaglesCM.dto.adm.BoardStatDto;
-import com.ydn.EaglesCM.dto.adm.MemberStatDto;
+import com.ydn.EaglesCM.dto.adm.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,6 +20,7 @@ public class AdmService {
 
     private final MemberRepository memberRepository;
     private final BoardRepository boardRepository;
+    private final ArticleRepository articleRepository;
 
     public MemberStatDto getMemberStatDto(){
 
@@ -33,6 +32,7 @@ public class AdmService {
         );
 
     }
+
 
 
     public BoardStatDto getBoardStatDto(){
@@ -65,5 +65,19 @@ public class AdmService {
         );
 
     }
+
+
+
+    public ArticleStatDto getArticleStatDto(){
+
+        return new ArticleStatDto(
+
+                articleRepository.count()
+
+        );
+
+    }
+
+
 
 }
